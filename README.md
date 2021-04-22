@@ -7,22 +7,25 @@ For almost 4 years now, us and another friend have had a radio show on WRBB. For
 
 Link to [UML Diagram](https://drive.google.com/file/d/1AUeBs3_f19komUxPrA1Up7CoEJuqXbzH/view?usp=sharing)
 
+## Setup
+In `src/main/resources/application.properties`, replace the `{{URL}}`, `{{USERNAME}}`, and `{{PASSWORD}}` placeholders with the corresponding values from your MySQL setup.
+
 ## User Model
 Our user model describes one of the show's 3 DJs (us and our friend Sean). We are the ones making the song selections for each episode, and we want to track who picked what song, hence the need for this table. Its fields are just those provided in the project description. 
 
-In the `selections` table, there is a foreign key (`user_id`) pointing to this table, signifying which DJ made that selection (one user <==> many selections).
+In the `selections` table, there is a foreign key (`user_id`) pointing to this table, signifying which DJ made that selection (one user <==> many selections). A user can exist without a selection.
 
 ## Domain Models
 
 ### Season
 Represents a season of our show. This table's fields keep track of what number season it is, what semester and year it took place, and what weekday and time each of its episodes aired. The `season` field (i.e. the season number) is the primary key/id.
 
-The `episodes` table contains a foreign key (`season`) pointing to this table, signifying which season the episode belongs to (one season <==> many episodes).
+The `episodes` table contains a foreign key (`season`) pointing to this table, signifying which season the episode belongs to (one season <==> many episodes) An episode cannot exist without a season.
 
 ### Episode
 Represents an episode of our show. This table's fields keep track of what season the episode belongs to, what number episode it is within the season, the date the episode aired, and whether the episode is a season finale or some other special episode that strayed from our usual format. The `season` and `episode` fields (i.e. the season and episode numbers) are a composite key/id for the table.
 
-The `selections` table contains a foreign composite key (`season` and `episode`) pointing to this table, signifying which episode the selection was made for (one episode <==> many selections).
+The `selections` table contains a foreign composite key (`season` and `episode`) pointing to this table, signifying which episode the selection was made for (one episode <==> many selections). A selection cannot exist without an episode.
 
 ### Selection
 Represents a song selection for a given episode. This table's fields keep track of what season and episode the selection belongs to, what song was selected, who made the selection, and what classification the selection falls into (more on this below).
@@ -30,12 +33,12 @@ Represents a song selection for a given episode. This table's fields keep track 
 ### Song
 Represents a song selected for an episode of our show. Contains the song's title and which album it is from.
 
-In the `selections` table, there is a foreign key pointing to this table, signifying which song corresponds to the selection (one song <==> many selections, since a song could be played on multiple episodes).
+In the `selections` table, there is a foreign key pointing to this table, signifying which song corresponds to the selection (one song <==> many selections, since a song could be played on multiple episodes). A song can exist without a selection.
 
 ### Album
 Represents an album, from which one or more songs were selected for the show. Contains the album's title and what year it came out.
 
-In the `songs` table, there is a foreign key pointing to this table, signifying which album the song was released on (one album <==> many songs).
+In the `songs` table, there is a foreign key pointing to this table, signifying which album the song was released on (one album <==> many songs). A song cannot exist without an album.
 
 ### Artist
 Represents an artist whose song(s) have been played on the show. Contains the artist's name.
