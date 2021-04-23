@@ -11,15 +11,15 @@ export const findEpisodeById = (season, episode) =>
 export const deleteEpisode = (season, episode) =>
     fetch(`${EPISODES_URL}/${season}/${episode}`, {method: "DELETE"})
 
-export const createEpisode = (season, episode) =>
-    fetch(EPISODES_URL, {
-        method: 'POST',
+export const createEpisode = (season, episodeNum, episode) =>
+    fetch(`${EPISODES_URL}/${season}/${episodeNum}`, {
+        method: 'PUT',
         body: JSON.stringify(episode),
         headers: {'content-type': 'application/json'}
     }).then(response => response.json())
 
 export const updateEpisode = (season, episodeNum, episode) =>
-    fetch(`${EPISODE_URL}/${season}/${episodeNum}`, {
+    fetch(`${EPISODES_URL}/${season}/${episodeNum}`, {
         method: 'PUT',
         body: JSON.stringify(episode),
         headers: {'content-type': 'application/json'}

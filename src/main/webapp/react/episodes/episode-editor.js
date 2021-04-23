@@ -36,8 +36,8 @@ const EpisodeEditor = () => {
     const deleteEpisode = (season, episode) =>
         episodeService.deleteEpisode(season, episode)
             .then(() => history.goBack());
-    const createEpisode = (season, episode) =>
-        episodeService.createEpisode(season, episode)
+    const createEpisode = (season, episode, newEpisode) =>
+        episodeService.createEpisode(season, episode, newEpisode)
             .then(() => history.goBack());
     const updateEpisode = (season, episode, newEpisode) =>
         episodeService.updateEpisode(season, episode, newEpisode)
@@ -73,7 +73,7 @@ const EpisodeEditor = () => {
                 onChange={(e) =>
                     setEpisode(episode => ({...episode, date: e.target.value}))
                 }
-                value={episode.date ? formatDate(episode.date) : ""}
+                value={formatDate(episode.date) ? formatDate(episode.date) : episode.date}
             />
             <br/>
 
@@ -106,13 +106,13 @@ const EpisodeEditor = () => {
                 [
                     <button
                         className="btn btn-danger"
-                        onClick={() => deleteEpisode(episode.season, episode.episodeNum)}
+                        onClick={() => deleteEpisode(episode.season, episode.episode)}
                     >
                         Delete
                     </button>,
                     <button
                         className="btn btn-primary"
-                        onClick={() => updateEpisode(episode.season, episode.episodeNum)}
+                        onClick={() => updateEpisode(episode.season, episode.episode, episode)}
                     >
                         Save
                     </button>
@@ -122,7 +122,7 @@ const EpisodeEditor = () => {
             {isNew &&
                 <button
                     className="btn btn-success"
-                    onClick={() => createEpisode(episode)}
+                    onClick={() => createEpisode(episode.season, episode.episode, episode)}
                 >
                     Create
                 </button>

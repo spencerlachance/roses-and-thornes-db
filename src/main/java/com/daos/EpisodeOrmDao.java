@@ -35,6 +35,9 @@ public class EpisodeOrmDao {
             @PathVariable("episode") Integer episode,
             @RequestBody Episode episodeUpdates) {
         Episode newEpisode = episodeRepository.findEpisodeById(episode,season);
+        if(newEpisode == null){
+            newEpisode = new Episode();
+        }
         newEpisode.setSeason(episodeUpdates.getSeason());
         newEpisode.setEpisode(episodeUpdates.getEpisode());
         newEpisode.setDate(episodeUpdates.getDate());
@@ -47,6 +50,6 @@ public class EpisodeOrmDao {
     public void deleteEpisode(
         @PathVariable("season") Integer season,
         @PathVariable("episode") Integer episode) {
-        episodeRepository.deleteEpisode(season, episode);
+        episodeRepository.delete(episodeRepository.findEpisodeById(episode,season));
     }
 }
