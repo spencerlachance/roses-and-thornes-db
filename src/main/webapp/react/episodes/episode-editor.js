@@ -94,25 +94,26 @@ const EpisodeEditor = () => {
                 defaultValue={episode.date ? formatDate(episode.date) : ""}
             />
             <br/>
-
-            <label>isSpecial</label>
             <input
-                className="form-control"
+                type="checkbox"
                 onChange={(e) =>
-                    setEpisode(episode => ({...episode, isSpecial: e.target.value}))
+                    setEpisode(episode => ({...episode, isSpecial: !episode.isSpecial}))
                 }
-                value={episode.isSpecial}
+                checked={episode.isSpecial}
             />
+            <label style={{margin: '10px'}}>isSpecial</label>
             <br/>
-
-            <label>isFinale</label>
+            <br/>
             <input
-                className="form-control"
+                type="checkbox"
                 onChange={(e) =>
-                    setEpisode(episode => ({...episode, isFinale: e.target.value}))
+                    setEpisode(episode => ({...episode, isFinale: !episode.isFinale}))
                 }
-                value={episode.isFinale}
+                checked={episode.isFinale}
             />
+            <label style={{margin: '10px'}}>isFinale</label>
+            <br/>
+            <br/>
             <button
                 className="btn btn-warning"
                 onClick={() => history.goBack()}
