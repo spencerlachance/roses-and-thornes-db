@@ -13,10 +13,10 @@ public class Selection {
     private Integer season;
     private Integer episode;
     @Enumerated(EnumType.STRING)
-    private Classification classification;
+    private ClassificationEnum classification;
 
     public Selection(Integer userId, Integer songId, Integer season,
-                     Integer episode, Classification classification) {
+                     Integer episode, ClassificationEnum classification) {
         this.userId = userId;
         this.songId = songId;
         this.season = season;
@@ -66,11 +66,11 @@ public class Selection {
         this.episode = episode;
     }
 
-    public Classification getClassification() {
+    public ClassificationEnum getClassification() {
         return classification;
     }
 
-    public void setClassification(Classification classification) {
+    public void setClassification(ClassificationEnum classification) {
         this.classification = classification;
     }
 }

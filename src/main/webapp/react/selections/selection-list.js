@@ -1,6 +1,7 @@
 import selectionService from "./selection-service"
 
 const {Component} = React;
+const {Link} = window.ReactRouterDOM;
 
 class SelectionList extends Component {
     constructor(props) {
@@ -128,12 +129,12 @@ class SelectionList extends Component {
         return (
             <div>
                 <h2>Selection List</h2>
-                <button
+                <Link
                     className="btn btn-primary"
-                    // TODO: onClick={}
+                    to="selections/new"
                 >
                     Add Selection
-                </button>
+                </Link>
                 <table style={{width: '100%'}}>
                     <thead>
                     <tr>
@@ -159,6 +160,11 @@ class SelectionList extends Component {
                                     <td>{this.getAlbumYear(selection.songId)}</td>
                                     <td>{this.state.userIdToName[selection.userId]}</td>
                                     <td>{selection.classification}</td>
+                                    <td>
+                                        <Link to={`/selections/${selection.id}`}>
+                                            Edit
+                                        </Link>
+                                    </td>
                                 </tr>
                             )
                         }

@@ -26,3 +26,7 @@ input.form-control {
 .float-left {
     float: left;
 }
+
+.cross-editor-link {
+    margin-left: 8px;
+}

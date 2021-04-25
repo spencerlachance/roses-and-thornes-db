@@ -4,6 +4,7 @@ const SONGS_URL = "http://localhost:8080/api/songs"
 const ALBUMS_URL = "http://localhost:8080/api/albums"
 const PERFORMANCES_URL = "http://localhost:8080/api/performances"
 const ARTISTS_URL = "http://localhost:8080/api/artists"
+const CLASSIFICATIONS_URL = "http://localhost:8080/api/classifications"
 
 export const findAllSelections = () =>
     fetch(SELECTIONS_URL)
@@ -49,6 +50,9 @@ export const findAllArtists = () =>
 export const findAllAlbums = () =>
     fetch(ALBUMS_URL).then(response => response.json())
 
+export const findAllClassifications = () =>
+    fetch(CLASSIFICATIONS_URL).then(response => response.json())
+
 export default {
     findAllSelections,
     findSelectionById,
@@ -60,5 +64,6 @@ export default {
     findAllSongs,
     findAllPerformances,
     findAllArtists,
-    findAllAlbums
+    findAllAlbums,
+    findAllClassifications
 }
