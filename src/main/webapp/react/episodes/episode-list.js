@@ -25,8 +25,8 @@ const EpisodeList = () => {
             <button className="btn btn-primary" onClick={() => history.push("/episodes/new/new")}>
                 Add Episode
             </button>
-            <table>
-                <thead className="thead">
+            <table style={{width: '100%'}}>
+                <thead>
                 <tr>
                     <th>Season</th>
                     <th>Episode</th>
