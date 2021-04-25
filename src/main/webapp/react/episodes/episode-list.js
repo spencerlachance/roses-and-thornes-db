@@ -20,7 +20,6 @@ const EpisodeList = () => {
     }, []);
     const history = useHistory();
     var playlistLocation = window.location.href.replace("episodes.html#/", "selections.html#");
-    console.log(playlistLocation)
     return (
         <div>
             <h2>Episodes List</h2>
