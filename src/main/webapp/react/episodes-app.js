@@ -1,6 +1,6 @@
-import EpisodeList from "./episode-list";
-import EpisodeEditor from "./episode-editor";
-import SelectionList from "./../selections/selection-list"
+import EpisodeList from "./episodes/episode-list";
+import EpisodeEditor from "./episodes/episode-editor";
+import SelectionList from "./selections/selection-list"
 
 const {HashRouter, Route} = window.ReactRouterDOM; 
 const App = () => {

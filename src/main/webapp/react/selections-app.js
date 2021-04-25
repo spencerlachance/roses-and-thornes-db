@@ -1,5 +1,5 @@
-import SelectionList from "./selection-list";
-import SelectionEditor from "./selection-editor";
+import SelectionList from "./selections/selection-list";
+import SelectionEditor from "./selections/selection-editor";
 
 const {HashRouter, Route} = window.ReactRouterDOM;
 const App = () => {
