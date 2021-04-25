@@ -1,5 +1,5 @@
-import EpisodeList from "./episodes/episode-list";
-import EpisodeEditor from "./episodes/episode-editor";
+import EpisodeList from "./episode-list";
+import EpisodeEditor from "./episode-editor";
 
 const {HashRouter, Route} = window.ReactRouterDOM; 
 const App = () => {
