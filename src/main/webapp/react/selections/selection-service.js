@@ -13,6 +13,10 @@ export const findSelectionById = (id) =>
     fetch(`${SELECTIONS_URL}/${id}`)
         .then(response => response.json())
 
+export const findSelectionBySeasonEpisode = (season, episode) =>
+fetch(`${SELECTIONS_URL}/${season}/${episode}`)
+    .then(response => response.json())
+
 export const deleteSelection = (id) =>
     fetch(`${SELECTIONS_URL}/${id}`, {method: "DELETE"})
 
@@ -48,6 +52,7 @@ export const findAllAlbums = () =>
 export default {
     findAllSelections,
     findSelectionById,
+    findSelectionBySeasonEpisode,
     deleteSelection,
     createSelection,
     updateSelection,

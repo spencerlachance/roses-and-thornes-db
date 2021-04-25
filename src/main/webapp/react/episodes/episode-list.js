@@ -19,6 +19,7 @@ const EpisodeList = () => {
             .then(episodes => setEpisodes(episodes))
     }, []);
     const history = useHistory();
+    var playlistLocation = window.location.href.replace("episodes/episodes.html#/", "selections/selections.html#");
     return (
         <div>
             <h2>Episodes List</h2>
@@ -34,6 +35,7 @@ const EpisodeList = () => {
                     <th>isSpecial</th>
                     <th>isFinale</th>
                     <th>Edit</th>
+                    <th>Playlist</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -46,6 +48,7 @@ const EpisodeList = () => {
                             <td>{episode.isSpecial ? "true" : "false"}</td>
                             <td>{episode.isFinale ? "true" : "false"}</td>
                             <td><Link to={`/episodes/${episode.season}/${episode.episode}`}>editor</Link></td>
+                            <td><a href={`${playlistLocation}/selections/${episode.season}/${episode.episode}`}>playlist</a></td>
                         </tr>
                     )
                 }

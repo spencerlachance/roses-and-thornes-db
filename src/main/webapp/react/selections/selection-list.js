@@ -19,8 +19,14 @@ class SelectionList extends Component {
     }
 
     componentDidMount() {
-        selectionService.findAllSelections()
-            .then(selections => this.setState({selections: selections}))
+        if(this.props.match.params.episode && this.props.match.params.season){
+            selectionService.findSelectionBySeasonEpisode(this.props.match.params.season, this.props.match.params.episode)
+                .then(selections => this.setState({selections: selections}))
+        }
+        else{
+            selectionService.findAllSelections()
+                .then(selections => this.setState({selections: selections}))
+        }
         selectionService.findAllUsers()
             .then(usersList => this.parseUsers(usersList))
         selectionService.findAllPerformances()

@@ -6,9 +6,8 @@ const App = () => {
     return (
         <div className="container-fluid">
             <HashRouter>
-                <Route path={["/selections", "/"]} exact={true}>
-                    <SelectionList/>
-                </Route>
+                <Route path="/selections/:season/:episode" component={SelectionList} />
+                <Route path={["/selections", "/"]} component={SelectionList} exact={true}/>
                 <Route path="/selections/:id" exact={true}>
                     <SelectionEditor/>
                 </Route>
