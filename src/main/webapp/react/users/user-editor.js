@@ -21,6 +21,7 @@ const UserEditor = () => {
     const {id} = useParams();
     const [user, setUser] = useState([]);
     const history = useHistory();
+    let parentURL = window.location.href.split("/users.html")[0]
     useEffect(() => {
         if (id !== "new") {
             findUserById(id);
@@ -107,6 +108,14 @@ const UserEditor = () => {
                 }
                 defaultValue={user.dateOfBirth ? formatDate(user.dateOfBirth) : ""}
             />
+            <br/>
+
+            {user.firstName && [
+                <a href={`${parentURL}/selections.html#/user/${user.id}`}>
+                    {user.firstName}'s Selections
+                </a>,
+                <br/>
+            ]}
 
             <button
                 className="btn btn-warning"

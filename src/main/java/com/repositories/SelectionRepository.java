@@ -16,6 +16,11 @@ public interface SelectionRepository
             nativeQuery = true)
     Selection findSelectionById(@Param("selectionId") Integer id);
 
-    @Query(value = "SELECT * FROM selections WHERE season=:seasonId AND episode=:episodeId", nativeQuery = true)
+    @Query(value = "SELECT * FROM selections WHERE season=:seasonId AND episode=:episodeId",
+            nativeQuery = true)
     List<Selection> findSelectionsBySeasonEpisode(@Param("seasonId") Integer season, @Param("episodeId") Integer episode);
+
+    @Query(value = "SELECT * FROM selections WHERE user_id=:userId",
+            nativeQuery = true)
+    List<Selection> findSelectionsByUserId(@Param("userId") Integer userId);
 }

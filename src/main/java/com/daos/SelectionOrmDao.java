@@ -28,10 +28,17 @@ public class SelectionOrmDao {
             @PathVariable("selectionId") Integer id) {
         return selectionRepository.findSelectionById(id);
     }
+
     @GetMapping("/api/selections/{seasonId}/{episodeId}")
-    public List<Selection> findSelectionBySeasonEpisode(
+    public List<Selection> findSelectionsBySeasonEpisode(
             @PathVariable("seasonId") Integer season, @PathVariable("episodeId") Integer episode) {
         return selectionRepository.findSelectionsBySeasonEpisode(season, episode);
+    }
+
+    @GetMapping("/api/selections/user/{userId}")
+    public List<Selection> findSelectionsByUserId(
+            @PathVariable("userId") Integer userId) {
+        return selectionRepository.findSelectionsByUserId(userId);
     }
 
     @PutMapping("/api/selections/{selectionId}")

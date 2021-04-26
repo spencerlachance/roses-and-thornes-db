@@ -15,8 +15,12 @@ export const findSelectionById = (id) =>
         .then(response => response.json())
 
 export const findSelectionBySeasonEpisode = (season, episode) =>
-fetch(`${SELECTIONS_URL}/${season}/${episode}`)
-    .then(response => response.json())
+    fetch(`${SELECTIONS_URL}/${season}/${episode}`)
+        .then(response => response.json())
+
+export const findSelectionsByUserId = userId =>
+    fetch(`${SELECTIONS_URL}/user/${userId}`)
+        .then(response => response.json())
 
 export const deleteSelection = (id) =>
     fetch(`${SELECTIONS_URL}/${id}`, {method: "DELETE"})
@@ -57,6 +61,7 @@ export default {
     findAllSelections,
     findSelectionById,
     findSelectionBySeasonEpisode,
+    findSelectionsByUserId,
     deleteSelection,
     createSelection,
     updateSelection,

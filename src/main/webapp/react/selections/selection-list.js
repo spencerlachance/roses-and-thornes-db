@@ -20,11 +20,16 @@ class SelectionList extends Component {
     }
 
     componentDidMount() {
-        if(this.props.match.params.episode && this.props.match.params.season){
-            selectionService.findSelectionBySeasonEpisode(this.props.match.params.season, this.props.match.params.episode)
+        let episode = this.props.match.params.episode
+        let season = this.props.match.params.season
+        let userId = this.props.match.params.userId
+        if (episode && season) {
+            selectionService.findSelectionBySeasonEpisode(season, episode)
                 .then(selections => this.setState({selections: selections}))
-        }
-        else{
+        } else if (userId) {
+            selectionService.findSelectionsByUserId(userId)
+                .then(selections => this.setState({selections: selections}))
+        } else {
             selectionService.findAllSelections()
                 .then(selections => this.setState({selections: selections}))
         }
@@ -128,7 +133,7 @@ class SelectionList extends Component {
     render() {
         return (
             <div>
-                <h2>Selection List</h2>
+                <h2>Selections List</h2>
                 <Link
                     className="btn btn-primary"
                     to="selections/new"
