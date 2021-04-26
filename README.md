@@ -8,7 +8,10 @@ For almost 4 years now, us and another friend have had a radio show on WRBB. For
 Link to [UML Diagram](https://drive.google.com/file/d/1AUeBs3_f19komUxPrA1Up7CoEJuqXbzH/view?usp=sharing)
 
 ## Setup
-In `src/main/resources/application.properties`, replace the `{{URL}}`, `{{USERNAME}}`, and `{{PASSWORD}}` placeholders with the corresponding values from your MySQL setup.
+* Import the database dump located in the `database` directory into your MySQL client
+* In `src/main/resources/application.properties`, replace the `{{URL}}`, `{{USERNAME}}`, and `{{PASSWORD}}` placeholders with the corresponding values from your MySQL setup.
+* Run the `RosesThornesAPI` class
+* Open the file `src/main/webapp/index.html` in your browser
 
 ## User Model
 Our user model describes one of the show's 3 DJs (us and our friend Sean). We are the ones making the song selections for each episode, and we want to track who picked what song, hence the need for this table. Its fields are just those provided in the project description. 
