@@ -29,7 +29,7 @@ const EpisodeList = () => {
             >
                 Add Episode
             </button>
-            <table style={{width: '100%'}}>
+            <table>
                 <thead>
                 <tr>
                     <th>Season</th>

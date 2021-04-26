@@ -140,7 +140,7 @@ class SelectionList extends Component {
                 >
                     Add Selection
                 </Link>
-                <table style={{width: '100%'}}>
+                <table>
                     <thead>
                     <tr>
                         <th>Season</th>

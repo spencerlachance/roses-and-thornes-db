@@ -27,6 +27,10 @@ input.form-control {
     float: left;
 }
 
+table {
+    width: 100%;
+}
+
 .cross-editor-link {
     margin-left: 8px;
 }
