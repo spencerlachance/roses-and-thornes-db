@@ -116,6 +116,7 @@ const UserEditor = () => {
                 </a>,
                 <br/>
             ]}
+            <br/>
 
             <button
                 className="btn btn-warning"
