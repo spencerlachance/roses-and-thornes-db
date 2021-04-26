@@ -57,4 +57,36 @@ Contains the 4 possible semesters (`FALL`, `SPRING`, `SUMMER I`, `SUMMER II`) th
 This one requires some more background. Our show is called Roses & Thornes (yes, it's spelled wrong) and every song selected for an episode is either a Rose (a good song), a Thorne (a bad song), or an outro song that we sometimes play at the end of an episode. So this Enum contains the values: `ROSE`, `THORNE`, and `OUTRO`, and one of them will be included in each record in the `selections` table.
 
 ## User Interface
-TBD
+
+### P2
+The user object that we implemented a user interface for is `User`, our only user object. The domain object that we chose to implement user interfaces for are `Episode` and `Selection`. 
+
+Accordingly, in the Java backend for each of the 3 objects, we implemented:
+* model classes with fields that match those of the corresponding database table 
+* repository classes that extend `CrudRepository` with additional `findAll<Object>s` and `find<Object>ById` methods with custom SQL queries
+* DAO classes with `create<Object>`, `findAll<Object>s`, `find<Object>ById`, `update<Object>`, and `delete<Object>` methods that are each mapped to a different HTTP request
+
+For the React frontend, we created the following files for each of the 3 objects:
+* `<object>s-app.js` - React App that renders different components based on the user's web address
+* `<object>s.html` - parent page where the aforementioned React App and its other components are rendered
+* `<object>-service.js` - contains functions that send HTTP requests to the backend telling it to perform certain operations on the database. Each function in this file corresponds to a method in the DAO class.
+* `<object>-editor.js` - React Component that renders forms to edit each of the object's fields (excluding the id if it's an arbitrary, auto-incremented number). It is here where the user can CRUD a record via the UI.
+* `<object>-list.js` - React Component that renders a list of records in the object's table as well as a button to create a new record. Included with each record is a link to the Editor for that record.
+
+There is also an `index.html` file that is the landing page for our entire project. It contains 3 links to the list pages for each object. `index.css` contains the CSS styles for the entire web app.
+
+### Additional List Details
+The Users List page just displays the first name of each user that links to its editor. For the Episodes List page, we took it a step further and displayed the values for every field in the table organized into a sort of grid. 
+
+For the Selections List page, since each selection is tied to a song, we took things another step further by using each selection's song ID to fetch the song title, artist name(s), album titles, and year from their corresponding tables and add them to the grid. We also used the selections' user IDs to fetch the corresponding user first names and added those to the grid as well. In order to pull this off, we had to write stripped-down models, repositories, and DAOs for `Song`, `Album`, `Performance`, and `Artist` that are only capable of retrieving data from these tables (as opposed to CRUDing them). We also added functions to the `service.js` files to communicate with the appropriate DAOs.
+
+Additionally, we had to write a model, repository, DAO, and service function for the Classification enum so all of its possible values could be fetched from the database and displayed in a dropdown on the Selection Editor page.
+
+### P3
+Per the additional P3 UI requirments, we added the following links:
+* In the User Editor, there is a link to a Selections List containing the selections that the user made (one user <==> many selections)
+* In the Episode Editor, there is link to a Selections List containing the selections made for that episode (one episode <==> many selections)
+* In the Selection Editor, there is a link to the Editor for the episode that the selection was made for (many selections <==> one episode)
+* In the Selection Editor, there is a link to the Editor for the user that made the selection (many selections <==> one user)
+
+The first 2 links forced us to add new functions to the Selection service file, DAO, and repository so that selections can be queried from the database according to their episode and user IDs.
