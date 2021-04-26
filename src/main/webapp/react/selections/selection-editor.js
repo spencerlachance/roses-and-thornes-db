@@ -8,7 +8,7 @@ const SelectionEditor = () => {
     const [selection, setSelection] = useState({})
     const [classifications, setClassifications] = useState([])
     const history = useHistory()
-    let parentURL = window.location.href.split("selections.html")[0]
+    let parentURL = window.location.href.split("/selections.html")[0]
     let isNew = false
     if (id === "new") {
         isNew = true
@@ -62,7 +62,7 @@ const SelectionEditor = () => {
             {selection.episode && (
                 <a
                     className="cross-editor-link"
-                    href={`${parentURL}episodes.html#/episodes/${selection.season}/${selection.episode}`}
+                    href={`${parentURL}/episodes.html#/episodes/${selection.season}/${selection.episode}`}
                 >
                     Edit
                 </a>
@@ -90,7 +90,7 @@ const SelectionEditor = () => {
             {selection.userId && (
                 <a
                     className="cross-editor-link"
-                    href={`${parentURL}users.html#/users/${selection.userId}`}
+                    href={`${parentURL}/users.html#/users/${selection.userId}`}
                 >
                     Edit
                 </a>
