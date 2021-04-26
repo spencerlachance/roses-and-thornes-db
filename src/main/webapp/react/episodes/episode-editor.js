@@ -16,8 +16,9 @@ const EpisodeEditor = () => {
     const {season, episodeNum} = useParams();
     const [episode, setEpisode] = useState([]);
     const history = useHistory();
-    var isNew = false;
-    if(season == "new"){
+    let parentURL = window.location.href.split("episodes.html")[0];
+    let isNew = false;
+    if(season === "new"){
         isNew = true;
     }
     useEffect(() => {
@@ -37,7 +38,7 @@ const EpisodeEditor = () => {
     const updateEpisode = (season, episode, newEpisode) =>
         episodeService.updateEpisode(season, episode, newEpisode)
             .then(() => history.goBack());
-    console.log(episode)
+
     return (
         <div>
             <h2>Episodes Editor</h2>
@@ -94,6 +95,7 @@ const EpisodeEditor = () => {
                 defaultValue={episode.date ? formatDate(episode.date) : ""}
             />
             <br/>
+
             <input
                 type="checkbox"
                 onChange={(e) =>
@@ -104,6 +106,7 @@ const EpisodeEditor = () => {
             <label style={{margin: '10px'}}>isSpecial</label>
             <br/>
             <br/>
+
             <input
                 type="checkbox"
                 onChange={(e) =>
@@ -114,6 +117,15 @@ const EpisodeEditor = () => {
             <label style={{margin: '10px'}}>isFinale</label>
             <br/>
             <br/>
+
+            {episode.episode && [
+                <a href={`${parentURL}/selections.html#/selections/${episode.season}/${episode.episode}`}>
+                    This Episode's Selections
+                </a>,
+                <br/>
+            ]}
+            <br/>
+
             <button
                 className="btn btn-warning"
                 onClick={() => history.goBack()}
