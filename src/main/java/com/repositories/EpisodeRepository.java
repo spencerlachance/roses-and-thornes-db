@@ -13,9 +13,7 @@ public interface EpisodeRepository
     extends CrudRepository<Episode, EpisodeId> {
         
     @Query(value = "SELECT * FROM episodes", nativeQuery = true)
-    public List<Episode> findAllEpisodes();
+    List<Episode> findAllEpisodes();
     @Query(value = "SELECT * FROM episodes WHERE episode=:episodeNum AND season=:seasonNum", nativeQuery = true)
-    public Episode findEpisodeById(@Param("episodeNum") Integer e, @Param("seasonNum") Integer s);
-    //@Query(value = "DELETE * FROM episodes WHERE episode=:episodeNum AND season=:seasonNum", nativeQuery = true)
-    //public Episode deleteEpisode(@Param("episodeNum") Integer e, @Param("seasonNum") Integer s);
+    Episode findEpisodeById(@Param("episodeNum") Integer e, @Param("seasonNum") Integer s);
 }
