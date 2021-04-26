@@ -21,6 +21,7 @@ const EpisodeEditor = () => {
     const {season, episodeNum} = useParams();
     const [episode, setEpisode] = useState([]);
     const history = useHistory();
+    let parentURL = window.location.href.split("episodes.html")[0]
     let isNew = false;
     if (season === "new") {
         isNew = true;
