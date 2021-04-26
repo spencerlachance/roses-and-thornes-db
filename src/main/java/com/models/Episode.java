@@ -2,11 +2,10 @@ package com.models;
 
 import java.util.Date;
 import javax.persistence.*;
-import java.io.Serializable;
 
 
 @Entity
-@IdClass(EpisodeId  .class)
+@IdClass(EpisodeId.class)
 @Table(name="episodes")
 public class Episode {
     @Id

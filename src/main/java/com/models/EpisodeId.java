@@ -12,6 +12,5 @@ public class EpisodeId implements Serializable {
         this.episode = episode;
     }
 
-    // equals() and hashCode()
     public EpisodeId() {}
 }
