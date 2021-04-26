@@ -22,6 +22,10 @@ const UserEditor = () => {
     const [user, setUser] = useState([]);
     const history = useHistory();
     let parentURL = window.location.href.split("/users.html")[0]
+    let isNew = false
+    if (id === "new") {
+        isNew = true
+    }
     useEffect(() => {
         if (id !== "new") {
             findUserById(id);
@@ -125,7 +129,7 @@ const UserEditor = () => {
                 Cancel
             </button>
 
-            {user.id &&
+            {!isNew &&
                 [
                     <button
                         className="btn btn-danger"
@@ -142,7 +146,7 @@ const UserEditor = () => {
                 ]
             }
 
-            {!user.id &&
+            {isNew &&
                 <button
                     className="btn btn-success"
                     onClick={() => createUser(user)}
@@ -150,7 +154,6 @@ const UserEditor = () => {
                     Create
                 </button>
             }
-
         </div>
     )
 }

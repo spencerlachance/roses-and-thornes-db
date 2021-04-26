@@ -13,8 +13,11 @@ const UserList = () => {
 
     return (
         <div>
-            <h2>User List</h2>
-            <button className="btn btn-primary" onClick={() => history.push("/users/new")}>
+            <h2>Users List</h2>
+            <button
+                className="btn btn-primary"
+                onClick={() => history.push("/users/new")}
+            >
                 Add User
             </button>
             <ul className="list-group">

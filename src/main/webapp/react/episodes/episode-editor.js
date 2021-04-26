@@ -9,6 +9,11 @@ function formatDate(date) {
         day = '' + (d.getDate() + 1),
         year = d.getFullYear()
 
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+
     return [year, month, day].join('-')
 }
 
@@ -16,9 +21,8 @@ const EpisodeEditor = () => {
     const {season, episodeNum} = useParams();
     const [episode, setEpisode] = useState([]);
     const history = useHistory();
-    let parentURL = window.location.href.split("episodes.html")[0];
     let isNew = false;
-    if(season === "new"){
+    if (season === "new") {
         isNew = true;
     }
     useEffect(() => {
@@ -41,56 +45,35 @@ const EpisodeEditor = () => {
 
     return (
         <div>
-            <h2>Episodes Editor</h2>
+            <h2>Episode Editor</h2>
 
             <label>Season</label>
-            {!isNew &&
-            <input
-                className="form-control" readOnly
-                onChange={(e) =>
-                    setEpisode(episode => ({...episode, season: e.target.value}))
-                }
-                value={episode.season ? episode.season : ""}
-            />
-            }   
-            {isNew &&
             <input
                 className="form-control"
+                readOnly={!isNew}
                 onChange={(e) =>
                     setEpisode(episode => ({...episode, season: e.target.value}))
                 }
                 value={episode.season ? episode.season : ""}
             />
-            }  
             <br/>
 
             <label>Episode</label>
-            {!isNew &&
-            <input
-                className="form-control" readOnly
-                onChange={(e) =>
-                    setEpisode(episode => ({...episode, episode: e.target.value}))
-                }
-                value={episode.episode ? episode.episode : ""}
-            />
-            }
-            {isNew &&
-            <input
-                className="form-control" 
-                onChange={(e) =>
-                    setEpisode(episode => ({...episode, episode: e.target.value}))
-                }
-                value={episode.episode ? episode.episode : ""}
-            />
-            }
-            <br/>
-
-            <label>Date (yyyy-mm-dd) </label>
             <input
                 className="form-control"
-                onChange={function(e){
-                    setEpisode(episode => ({...episode, date: e.target.value}))
+                readOnly={!isNew}
+                onChange={(e) =>
+                    setEpisode(episode => ({...episode, episode: e.target.value}))
                 }
+                value={episode.episode ? episode.episode : ""}
+            />
+            <br/>
+
+            <label>Date (yyyy-mm-dd)</label>
+            <input
+                className="form-control"
+                onChange={(e) =>
+                    setEpisode(episode => ({...episode, date: e.target.value}))
                 }
                 defaultValue={episode.date ? formatDate(episode.date) : ""}
             />

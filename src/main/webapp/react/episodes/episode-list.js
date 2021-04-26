@@ -23,7 +23,10 @@ const EpisodeList = () => {
     return (
         <div>
             <h2>Episodes List</h2>
-            <button className="btn btn-primary" onClick={() => history.push("/episodes/new/new")}>
+            <button
+                className="btn btn-primary"
+                onClick={() => history.push("/episodes/new/new")}
+            >
                 Add Episode
             </button>
             <table style={{width: '100%'}}>
@@ -34,7 +37,6 @@ const EpisodeList = () => {
                     <th>Date</th>
                     <th>isSpecial</th>
                     <th>isFinale</th>
-                    <th>Edit</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -46,7 +48,11 @@ const EpisodeList = () => {
                             <td>{formatDate(episode.date)}</td>
                             <td>{episode.isSpecial ? "true" : "false"}</td>
                             <td>{episode.isFinale ? "true" : "false"}</td>
-                            <td><Link to={`/episodes/${episode.season}/${episode.episode}`}>editor</Link></td>
+                            <td>
+                                <Link to={`/episodes/${episode.season}/${episode.episode}`}>
+                                    Edit
+                                </Link>
+                            </td>
                         </tr>
                     )
                 }
